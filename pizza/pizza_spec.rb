@@ -66,7 +66,6 @@ describe Pizza do
   end
 
   describe '#required_bake_time' do
-
     it 'should return the sum of 900 with no toppings' do
       pizza = Pizza.new(name: "pepperoni")
       expect(pizza.require_bake_time).to be_a Integer
@@ -86,14 +85,44 @@ describe Pizza do
       @pizza = Pizza.new(name: "pepperoni", description: '15in. pizza')
       @topping_1 = Topping.new(name: "Cheese", required_bake_time: 120, time_baked: 0)
       @pizza.add_toppings([@topping_1])
-      @pizza.bake(10)
+      @pizza.bake(100)
     end
-    context 'should increment the bake time of the pizza' do
-      expect(@pizza.time_baked).to eq(10)
+    it 'should increment the bake time of the pizza' do
+      expect(@pizza.time_baked).to eq(100)
     end
 
-    context 'should increment the bake time on all of the pizza toppings' do
-      expect(@pizza.toppings[0].time_baked).to eq(10)
+    it 'should increment the bake time on all of the pizza toppings' do
+      expect(@pizza.toppings[0].time_baked).to eq(100)
+    end
+  end
+
+  describe '#baked?' do
+    it 'should return a boolean if pizza is finished baking or not (based on required baking time)' do
+      @pizza = Pizza.new(name: "pepperoni", description: '15in. pizza')
+      bool = [true, false]
+      expect(bool.include?(@pizza.baked?)).to be_true
+    end
+  end
+
+  describe 'cooked_toppings' do
+    before do
+      @pizza = Pizza.new(name: "pepperoni", description: '15in. pizza')
+      @topping_1 = Topping.new(name: "Cheese", required_bake_time: 120)
+      @topping_2 = Topping.new(name: "Pinapple", required_bake_time: 180)
+      @pizza.add_toppings([@topping_1, @topping_2])
+      @pizza.bake(130)
+    end
+
+    context '#finished_toppings' do
+      it 'should give an array of toppings that have finished baking' do
+        expect(@pizza.finished_toppings.length).to eq(1)
+      end
+    end
+
+    context '#unfinished_toppings' do
+      it 'should give an array of toppings that have finished baking' do
+        expect(@pizza.unfinished_toppings.length).to eq(1)
+      end
     end
   end
 
