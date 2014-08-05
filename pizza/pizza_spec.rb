@@ -67,17 +67,24 @@ describe Pizza do
 
   describe '#required_bake_time' do
 
-    it 'should return the sum of 900 plus max bake time of all toppings' do
+    it 'should return the sum of 900 with no toppings' do
       pizza = Pizza.new(name: "pepperoni")
       expect(pizza.require_bake_time).to be_a Integer
       expect(pizza.require_bake_time).to eq(900)
+    end
+
+    it 'should return the sum of 900 plus max bake time of all toppings' do
+      @pizza = Pizza.new(name: "pepperoni", description: '15in. pizza')
+      @topping_1 = Topping.new(name: "Cheese", required_bake_time: 120, time_baked: 0)
+      @pizza.add_toppings([@topping_1])
+      expect(@pizza.required_bake_time).to eq(1020)
     end
   end
 
   describe '#bake(time)' do
     before do
-      @pizza = Pizza.new(name: "pepperoni")
-      @topping_1 = Topping.new(name: "Cheese", required_bake_time: 5, time_baked: 0)
+      @pizza = Pizza.new(name: "pepperoni", description: '15in. pizza')
+      @topping_1 = Topping.new(name: "Cheese", required_bake_time: 120, time_baked: 0)
       @pizza.add_toppings([@topping_1])
       @pizza.bake(10)
     end
