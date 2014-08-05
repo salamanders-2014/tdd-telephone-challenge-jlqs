@@ -36,7 +36,7 @@ describe Todo do
       @todo.add_task(@t1)
       @todo.add_task(@t2)
       @todo.complete_all!
-      expect(@todo.all? { |t| t.complete? }).to eq(true)
+      expect(@todo.tasks.all? { |t| t.complete? }).to eq(true)
     end
   end
 
