@@ -2,9 +2,21 @@ require 'rspec'
 require_relative 'task'
 
 describe Task do
+
 	before do
 		@task = Task.new
 	end
+
+
+	# describe Task do
+	# 	it { should validate_presence_of :title }
+	# 	it { should validate_presence_of :description }
+	# 	it { should validate_presence_of :status }
+	# 	it { should validate_presence_of :created_at }
+	# end
+
+	#These should just be tests for a single Task model (Jeremy)
+
 
 	describe '#title' do
 		it 'should have a title' do
@@ -53,8 +65,10 @@ describe Task do
 
 	# describe '#complete?' do
 
+
 	# 	it 'should indicate whether a task has been completed' do
 
 	# 	end
+
 
 	end
