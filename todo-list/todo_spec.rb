@@ -31,5 +31,14 @@ describe Todo do
     end
   end
 
+  describe '#complete_all!' do
+    it 'should complete all tasks' do
+      @todo.add_task(@t1)
+      @todo.add_task(@t2)
+      @todo.complete_all!
+      expect(@todo.all? { |t| t.complete? }).to eq(true)
+    end
+  end
+
 end
 
