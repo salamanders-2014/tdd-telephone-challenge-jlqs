@@ -41,7 +41,15 @@ describe Pizza do
         pizza = Pizza.new(name: "pepperoni")
         expect(pizza.time_baked).to eq(0)
       end
+    end
+  end
 
+  describe '#toppings' do
+    before do
+      @pizza = Pizza.new
+    end
+    it 'should return an array of toppings' do
+      expect(@pizza.toppings).to be_a Array
     end
   end
 

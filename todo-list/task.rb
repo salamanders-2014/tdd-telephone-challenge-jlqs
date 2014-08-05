@@ -3,6 +3,6 @@ class Task
   def initialize(args={})
     @name = args[:name] || "Cheese Pizza"
     @description = args[:description] || "No Toppings"
-    @status = args.fetch(:status) { false }
+    @status = args.fetch(:status, false)
   end
 end
