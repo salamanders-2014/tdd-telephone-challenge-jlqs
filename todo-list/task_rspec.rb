@@ -33,7 +33,7 @@ describe Task do
 	describe '#status' do
 		it 'should have a status' do
 			bool = [true, false]
-			expect(bool.include?(@task.status).to be_true
+			expect(bool.include?(@task.status)).to be_true
 		end
 	end
 
