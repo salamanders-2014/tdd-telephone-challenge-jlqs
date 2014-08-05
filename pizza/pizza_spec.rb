@@ -4,7 +4,7 @@ require_relative 'pizza'
 describe Pizza do
   describe 'attributes' do
     before do
-      @pizza = Pizza.new(name: "pepperoni")
+      @pizza = Pizza.new("pepperoni")
     end
 
     context '#name' do
@@ -31,9 +31,9 @@ describe Pizza do
 
   describe '#initialize' do
     context '#name' do
-      it 'should raise an error if no name is given' do
+      it 'should have a default name if no name is given' do
         pizza = Pizza.new
-        expect(pizza.name).to raise_error(ArgumentError)
+        expect(pizza.name).to eq("DefaultPizza")
       end
     end
     context '#time_baked' do
