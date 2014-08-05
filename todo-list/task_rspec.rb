@@ -1,13 +1,16 @@
-require 'rails_helper'
+require 'rspec'
+require_relative 'task'
 
-RSpec.describe Task, :type => :model do
+describe Task do
 
-	describe Task do
-		it { should validate_presence_of :title }
-		it { should validate_presence_of :description }
-		it { should validate_presence_of :status }
-		it { should validate_presence_of :created_at }
-	end
+	# describe Task do
+	# 	it { should validate_presence_of :title }
+	# 	it { should validate_presence_of :description }
+	# 	it { should validate_presence_of :status }
+	# 	it { should validate_presence_of :created_at }
+	# end
+
+	#These should just be tests for a single Task model (Jeremy)
 
 	describe '#default status' do
 
