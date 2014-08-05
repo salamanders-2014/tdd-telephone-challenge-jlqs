@@ -7,7 +7,7 @@ describe Pizza do
       @pizza = Pizza.new(name: "pepperoni")
     end
 
-    describe '#name' do
+    context '#name' do
       context '#name' do
         it 'should have a name' do
           expect(@pizza.name).to be_a String
@@ -16,13 +16,13 @@ describe Pizza do
       end
     end
 
-    describe '#description' do
+    context '#description' do
       it 'should have a description' do
         expect(@pizza.description).to be_a String
       end
     end
 
-    describe '#time_baked' do
+    context '#time_baked' do
       it 'should have a time_baked' do
         expect(@pizza.time_baked).to be_a Integer
       end
