@@ -1,47 +1,60 @@
-require 'rails_helper'
+require 'rspec'
+require_relative 'task'
 
-RSpec.describe Task, :type => :model do
-
-	describe Task do
-		it { should validate_presence_of :title }
-		it { should validate_presence_of :description }
-		it { should validate_presence_of :status }
-		it { should validate_presence_of :created_at }
+describe Task do
+	before do
+		@task = Task.new
 	end
 
-	describe '#default status' do
-
-		it 'show default status as incomplete' do
-			task = Task.new
-			expect(task.status).to eq("incomplete")
+	describe '#title' do
+		it 'should have a title' do
+			expect(@task.name).to be_a String
 		end
+	end
 
+	describe '#description' do
+		it 'should have a description' do
+			expect(@task.description).to be_a String
+		end
+	end
+
+	describe '#status' do
+		it 'should have a status' do
+			expect(@task.status).to be_a Boolean
 	end
 
 
+	# describe '#default status' do
+
+	# 	it 'show default status as incomplete' do
+	# 		task = Task.new
+	# 		expect(task.status).to eq("incomplete")
+	# 	end
+
+	# end
 
 
-	describe '#mark_as_complete!' do
+	# describe '#mark_as_complete!' do
 
-		it 'shows the status as complete' do
+	# 	it 'shows the status as complete' do
 
 
-		end
+	# 	end
 
-	end
+	# end
 
-	describe '#mark_as_incomplete!' do
+	# describe '#mark_as_incomplete!' do
 
-		it 'shows the status as incomplete' do
+	# 	it 'shows the status as incomplete' do
 
-		end
+	# 	end
 
-	end
+	# end
 
-	describe '#complete?' do
+	# describe '#complete?' do
 
-		it 'should indicate whether a task has been completed' do
+	# 	it 'should indicate whether a task has been completed' do
 
-		end
+	# 	end
 
 	end
