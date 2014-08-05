@@ -32,7 +32,8 @@ describe Task do
 
 	describe '#status' do
 		it 'should have a status' do
-			expect(@task.status).to be_a Boolean
+			expect(@task.status).to be_a Integer
+		end
 	end
 
 
