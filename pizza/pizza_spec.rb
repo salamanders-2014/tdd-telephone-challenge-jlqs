@@ -47,13 +47,20 @@ describe Pizza do
     end
   end
 
-  describe '#toppings' do
+  describe '#add_toppings([topping_objects])' do
     before do
       @pizza = Pizza.new(name: "pepperoni")
-      topping = Topping.new(name: "Cheese", required_bake_time: 5, time_baked: 0)
+      @topping_1 = Topping.new(name: "Cheese", required_bake_time: 5, time_baked: 0)
     end
-    it 'should return an array of toppings' do
-      expect(@pizza.toppings).to be_a Array
+
+    context '#toppings' do
+      it 'should return an array of toppings' do
+        expect(@pizza.toppings).to be_a Array
+      end
+    end
+
+    it 'should add toppings' do
+      @pizza.add_toppings([@topping_1])
       expect(@pizza.toppings[0]).to be_a Topping
     end
   end
@@ -64,6 +71,22 @@ describe Pizza do
       pizza = Pizza.new(name: "pepperoni")
       expect(pizza.require_bake_time).to be_a Integer
       expect(pizza.require_bake_time).to eq(900)
+    end
+  end
+
+  describe '#bake(time)' do
+    before do
+      @pizza = Pizza.new(name: "pepperoni")
+      @topping_1 = Topping.new(name: "Cheese", required_bake_time: 5, time_baked: 0)
+      @pizza.add_toppings([@topping_1])
+      @pizza.bake(10)
+    end
+    context 'should increment the bake time of the pizza' do
+      expect(@pizza.time_baked).to eq(10)
+    end
+
+    context 'should increment the bake time on all of the pizza toppings' do
+      expect(@pizza.toppings[0].time_baked).to eq(10)
     end
   end
 
