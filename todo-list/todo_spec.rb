@@ -40,7 +40,7 @@ describe Todo do
     end
   end
 
-  describe 'complete?' do 
+  describe '#complete?' do 
     it 'should returns true if all tasks are completed and false otherwise' do
       @todo.add_task(@t1)
       expect(@todo.complete?).to eq(false)
@@ -49,5 +49,22 @@ describe Todo do
     end
   end
 
+  describe '#completed_tasks' do
+    it 'should returns a list of completed tasks' do
+      @todo.add_task(@t1)
+      @todo.add_task(@t2)
+      @t1.mark_as_complete!
+      expect(@todo.completed_tasks.length).to eq(1)
+    end
+  end
+
+  describe '#incompleted_tasks' do
+    it 'should returns a list of incompleted tasks' do
+      @todo.add_task(@t1)
+      @todo.add_task(@t2)
+      @t1.mark_as_complete!
+      expect(@todo.incompleted_tasks.length).to eq(1)
+    end
+  end
 end
 
