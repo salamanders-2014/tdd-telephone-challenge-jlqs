@@ -20,6 +20,7 @@ describe Pizza do
       end
 
     end
+  end
 
   describe '#description' do
     it 'should have a description' do
