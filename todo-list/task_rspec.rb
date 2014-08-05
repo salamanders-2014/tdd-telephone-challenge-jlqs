@@ -42,7 +42,7 @@ describe Task do
 	describe '#complete?' do
 		it 'should check whether a task is completed' do
 			bool = [true, false]
-			expect(bool.include?(@task.status)).to eq(true)
+			expect(bool.include?(@task.complete?)).to eq(true)
 		end
 	end
 
