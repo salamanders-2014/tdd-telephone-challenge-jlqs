@@ -33,7 +33,7 @@ describe Pizza do
     context '#name' do
       it 'should have a default name if no name is given' do
         pizza = Pizza.new
-        expect(pizza.name).to raise_error
+        expect{pizza.name}.to raise_error
       end
     end
     context '#time_baked' do
