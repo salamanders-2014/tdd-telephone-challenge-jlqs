@@ -4,19 +4,8 @@ require_relative 'task'
 describe Task do
 
 	before do
-		@task = Task.new
+		@task = Task.new(name: "Eat", description: "Have a pizza")
 	end
-
-
-	# describe Task do
-	# 	it { should validate_presence_of :title }
-	# 	it { should validate_presence_of :description }
-	# 	it { should validate_presence_of :status }
-	# 	it { should validate_presence_of :created_at }
-	# end
-
-	#These should just be tests for a single Task model (Jeremy)
-
 
 	describe '#title' do
 		it 'should have a title' do
@@ -31,46 +20,37 @@ describe Task do
 	end
 
 	describe '#status' do
-		it 'should have a status' do
+		it 'default status should be incomplete' do
+			expect(@task.status).to eq("incomplete")
+		end
+	end
+
+	describe '#mark_as_complete!' do
+		it 'should change the status to complete' do
+			@task.mark_as_complete!
+			expect(@task.status).to eq("complete")
+		end
+	end
+
+	describe '#mark_as_incomplete!' do
+		it 'should change the status to incomplete' do
+			@task.mark_as_incomplete!
+			expect(@task.status).to eq("incomplete")
+		end
+	end
+
+	describe '#complete?' do
+		it 'should check whether a task is completed' do
 			bool = [true, false]
-			expect(bool.include?(@task.status)).to be_true
+			expect(bool.include?(@task.status)).to eq(true)
 		end
 	end
 
 
-	# describe '#default status' do
-
-	# 	it 'show default status as incomplete' do
-	# 		task = Task.new
-	# 		expect(task.status).to eq("incomplete")
-	# 	end
-
-	# end
 
 
-	# describe '#mark_as_complete!' do
-
-	# 	it 'shows the status as complete' do
 
 
-	# 	end
 
-	# end
+end
 
-	# describe '#mark_as_incomplete!' do
-
-	# 	it 'shows the status as incomplete' do
-
-	# 	end
-
-	# end
-
-	# describe '#complete?' do
-
-
-	# 	it 'should indicate whether a task has been completed' do
-
-	# 	end
-
-
-	end
