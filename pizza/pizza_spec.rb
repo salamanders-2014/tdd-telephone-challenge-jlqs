@@ -11,6 +11,7 @@ describe Pizza do
   describe '#name' do
     it 'should have a name' do
       expect(@pizza.name).to be_a String
+    end
 
     context '#name' do
       it 'should have a name' do
@@ -29,6 +30,7 @@ describe Pizza do
   describe '#time_baked' do
     it 'should have a time_baked' do
       expect(@pizza.time_baked).to be_a Integer
+    end
 
     context '#description' do
       it 'should have a description' do
