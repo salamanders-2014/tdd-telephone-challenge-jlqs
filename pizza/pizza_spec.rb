@@ -4,7 +4,7 @@ require_relative 'pizza'
 describe Pizza do
   describe 'attributes' do
     before do
-      @pizza = Pizza.new("pepperoni")
+      @pizza = Pizza.new(name: "pepperoni")
     end
 
     context '#name' do
@@ -33,7 +33,7 @@ describe Pizza do
     context '#name' do
       it 'should have a default name if no name is given' do
         pizza = Pizza.new
-        expect(pizza.name).to eq("DefaultPizza")
+        expect(pizza.name).to raise_error
       end
     end
     context '#time_baked' do
@@ -46,7 +46,7 @@ describe Pizza do
 
   describe '#toppings' do
     before do
-      @pizza = Pizza.new
+      @pizza = Pizza.new(name: "pepperoni")
     end
     it 'should return an array of toppings' do
       expect(@pizza.toppings).to be_a Array
